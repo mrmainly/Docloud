@@ -1,27 +1,21 @@
 import React, {useState} from 'react'
 import { Layout, Button, Typography, Input, Form, Table } from "antd";
-import styled from 'styled-components'
-import { BorderLeftOutlined } from '@ant-design/icons';
 const {Content} = Layout; 
 const {Title} = Typography;
 
 const columns = [
     {
-      dataIndex: 'position',
+      dataIndex: 'nameSub',
     },
     {
-      dataIndex: 'user',
-    },
-    {
-      dataIndex: 'organization',
+      dataIndex: 'nameRep',
     },
   ];
   const data = [
     {
       key: '1',
-      position: 'itpark',
-      user: 32,
-      organization: 'yakutsk',
+      nameRep: 'itpark',
+      nameSub: 32,
     },
   ];
 const layout = {
@@ -30,15 +24,15 @@ const layout = {
 
 
 
-const Representatives = ({}) => {
+const Subdivision = ({}) => {
     const [state, setState] = useState()
     return(
         <Content>
-          <Button size="large" type="primary" style={{marginTop: 20}}>ДОБАВИТЬ НОВОГО ПРЕДСТАВИТЕЛЯ</Button>
+          <Button size="large" type="primary" style={{marginTop: 20}}>ДОБАВИТЬ НОВОЕ ПОДРАЗДЕЛЕНИЕ</Button>
           
                 <Form {...layout} style={{display: "flex", flexDirection: 'row',marginLeft: 30, marginTop: 30}}>
                 <Form.Item style={{width:'25%',}}>
-                    <Title level={5} style={{ color: '#007dfd', }}>Должность</Title>
+                    <Title level={5} style={{ color: '#007dfd', }}>Наименования подразделения</Title>
                     <Input  
                         bordered={false} 
                         style={{borderBottom: "1px solid gray",}} 
@@ -49,11 +43,7 @@ const Representatives = ({}) => {
                     />
                 </Form.Item>
                 <Form.Item style={{marginLeft: '8%', width:'25%',}}>
-                    <Title level={5} style={{ color: '#007dfd', whiteSpace: 'nowrap',}}>Пользователь</Title>
-                    <Input bordered={false} style={{borderBottom: "1px solid gray",}} />
-                </Form.Item>
-                <Form.Item style={{marginLeft: '8%', width:'25%', }}>
-                    <Title level={5} style={{ color: '#007dfd', whiteSpace: 'nowrap',}}>Организация</Title>
+                    <Title level={5} style={{ color: '#007dfd', whiteSpace: 'nowrap',}}>Наименование организации</Title>
                     <Input bordered={false} style={{borderBottom: "1px solid gray",}} />
                 </Form.Item>
                 </Form>
@@ -65,4 +55,4 @@ const Representatives = ({}) => {
     )
 }
 
-export default Representatives
+export default Subdivision

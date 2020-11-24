@@ -38,14 +38,14 @@ const ContainerTitle = styled.div`
    
 `
 
-const LeftPanel = () => {
+const LeftPanel = ({select}) => {
   const router = useRouter();
  
   return (
     <Sider width={"23%"} className="site-layout-background" style={{backgroundColor: '#616161',  overflow: 'auto', height: '100vh',left: 0,}}>
       <Menu
         theme="dark"
-        defaultSelectedKeys={["1"]}
+        defaultSelectedKeys={select}
         defaultOpenKeys={["sub1"]}
         style={{ height: "100%", borderRight: 0 , backgroundColor: '#616161',}}
         mode="inline"
@@ -62,14 +62,18 @@ const LeftPanel = () => {
         <Menu.ItemGroup key="g1" title="Карточки организации" style={{color: '#d5d5d5'}}>
           <Menu.Item key="4" onClick={() => {
             router.push('/')
-          }} icon={<InsertRowLeftOutlined />}><Span>организации</Span></Menu.Item>
+          }} icon={<InsertRowLeftOutlined />}><Span>Организации</Span></Menu.Item>
           <Menu.Item key="5" onClick={() => {
             router.push('/representatives')
-          }} icon={<TeamOutlined />}><Span>предстовители</Span></Menu.Item>
-          <Menu.Item key="6" icon={<BankOutlined />}><Span>подразделения</Span></Menu.Item>
+          }} icon={<TeamOutlined />}><Span>Представители</Span></Menu.Item>
+          <Menu.Item key="6" onClick={() => {
+            router.push('/subdivision')
+          }} icon={<BankOutlined />}><Span>Подразделения</Span></Menu.Item>
         </Menu.ItemGroup>
         <Menu.ItemGroup key="g1" title="Архив">
-          <Menu.Item key="7" icon={<FolderOutlined />}><Span>Справочники</Span></Menu.Item>
+          <Menu.Item key="7" icon={<FolderOutlined />} onClick={() => {
+            router.push('/directory')
+          }}><Span>Справочники</Span></Menu.Item>
           <Menu.Item key="8" icon={<WalletOutlined />}><Span>Документы</Span></Menu.Item>
         </Menu.ItemGroup>
         <Menu.ItemGroup key="g1" title="Работа с запросами">

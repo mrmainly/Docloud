@@ -11,9 +11,9 @@ export default function Home() {
 
   return (
       <Layout>
-        <LeftPanel />
+        <LeftPanel select="5"/>
         <Layout>
-        <Navbar title="Предстовители" />
+        <Navbar title="Представители" />
           <Layout style={{ padding: "0 24px 24px" }}>
               <Represantive />
           </Layout>
