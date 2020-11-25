@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Layout, Menu, Typography } from "antd";
 import styled from "styled-components";
 import {useRouter} from 'next/router'
+import Link from 'next/link'
 import { UserOutlined ,
     MailOutlined ,
     InsertRowLeftOutlined ,
@@ -31,7 +32,7 @@ const MenuBlock = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
-const Span = styled.span`
+const Span = styled.a`
     color: white;
 `
 const ContainerTitle = styled.div`
@@ -60,32 +61,26 @@ const LeftPanel = ({select}) => {
         </Menu.ItemGroup>
 
         <Menu.ItemGroup key="g1" title="Карточки организации" style={{color: '#d5d5d5'}}>
-          <Menu.Item key="4" onClick={() => {
-            router.push('/')
-          }} icon={<InsertRowLeftOutlined />}><Span>Организации</Span></Menu.Item>
-          <Menu.Item key="5" onClick={() => {
-            router.push('/representatives')
-          }} icon={<TeamOutlined />}><Span>Представители</Span></Menu.Item>
-          <Menu.Item key="6" onClick={() => {
-            router.push('/subdivision')
-          }} icon={<BankOutlined />}><Span>Подразделения</Span></Menu.Item>
+          <Menu.Item key="4" icon={<InsertRowLeftOutlined />}><Link href="/"><Span>Организации</Span></Link></Menu.Item>
+          <Menu.Item key="5" icon={<TeamOutlined />}><Link href="/representatives"><Span>Представители</Span></Link></Menu.Item>
+          <Menu.Item key="6" icon={<BankOutlined />}><Link href="/subdivision"><Span>Подразделения</Span></Link></Menu.Item>
         </Menu.ItemGroup>
         <Menu.ItemGroup key="g1" title="Архив">
-          <Menu.Item key="7" icon={<FolderOutlined />} onClick={() => {
-            router.push('/directory')
-          }}><Span>Справочники</Span></Menu.Item>
-          <Menu.Item key="8" icon={<WalletOutlined />}><Span>Документы</Span></Menu.Item>
+          <Menu.Item key="7" icon={<FolderOutlined />}><Link href="/directory"><Span>Справочники</Span></Link></Menu.Item>
+          <Menu.Item key="8" icon={<WalletOutlined />}><Link href="/documents"><Span>Документы</Span></Link></Menu.Item>
         </Menu.ItemGroup>
         <Menu.ItemGroup key="g1" title="Работа с запросами">
           <Menu.Item
             key="9"
             icon={<ExpandAltOutlined />}
           >
+            <Link href="/Request/request">
               <Span>
             Запросы
             </Span>
+            </Link>
           </Menu.Item>
-          <Menu.Item key="10" icon={<ReadOutlined />}><Span>Коменнтарии</Span></Menu.Item>
+          <Menu.Item key="10" icon={<ReadOutlined />}><Link href=""><Span>Коменнтарии</Span></Link></Menu.Item>
           <Menu.Item key="15" icon={<FileOutlined />}><Span>Файлы</Span></Menu.Item>
           <Menu.Item key="16" icon={<CheckOutlined />}><Span>Статусы</Span></Menu.Item>
         </Menu.ItemGroup>
