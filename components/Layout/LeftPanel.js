@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Layout, Menu, Typography } from "antd";
+import React, { useContext, useState } from "react";
+import { Button, Layout, Menu, Typography } from "antd";
 import styled from "styled-components";
 import {useRouter} from 'next/router'
 import Link from 'next/link'
@@ -13,7 +13,8 @@ import { UserOutlined ,
     ExpandAltOutlined, 
     ReadOutlined, 
     FileOutlined,
-    CheckOutlined} from '@ant-design/icons';
+    CheckOutlined,
+    MenuFoldOutlined} from '@ant-design/icons';
 const { Sider } = Layout;
 const { Title } = Typography;
 
@@ -41,9 +42,17 @@ const ContainerTitle = styled.div`
 
 const LeftPanel = ({select}) => {
   const router = useRouter();
+
+  const [collapsed, setCollapsed] = useState(false)
+
+  const onCollapse = (collapsed) => {
+
+    setCollapsed(collapsed)
+  };
  
   return (
-    <Sider width={"23%"} className="site-layout-background" style={{backgroundColor: '#616161',  overflow: 'auto', height: '100vh',left: 0,}}>
+    <Sider width={"23%"} className="site-layout-background" style={{backgroundColor: '#616161'}}  collapsed={collapsed} collapsible onCollapse={onCollapse}>
+      
       <Menu
         theme="dark"
         defaultSelectedKeys={select}
@@ -51,10 +60,10 @@ const LeftPanel = ({select}) => {
         style={{ height: "100%", borderRight: 0 , backgroundColor: '#616161',}}
         mode="inline"
       >  
-        <ContainerTitle>
-            <Title level={1} style={{color: 'white', fontFamily: 'sans-serif', marginTop: 20, marginLeft: 20,}}>Docloud</Title>
-          
-         </ContainerTitle>
+        <Menu.Item key="1" disabled style={{marginTop: 30}}>
+            <Title level={1} style={{color: 'white', fontFamily: 'sans-serif'}}>Docloud</Title>
+          </Menu.Item>
+      
         <Menu.ItemGroup>
         <Menu.Item icon={<UserOutlined />} key="1"><Span>Admin</Span></Menu.Item>
         <Menu.Item key="2" icon={<MailOutlined />}><Span>docloud@mail.ru</Span></Menu.Item>
